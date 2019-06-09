@@ -78,7 +78,7 @@ for position in range(len(seq_list)):
 
 # Looping sequence list to find k-mers
 
-k = 6
+k = 6     # variable, three questions involving different k's
 i = 0
 newdict = {}
 
