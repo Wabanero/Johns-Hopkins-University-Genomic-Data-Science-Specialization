@@ -1,0 +1,53 @@
+'''
+First, implement a version of the naive exact matching algorithm that is strand-aware. That is, instead of looking only
+for occurrences of P in T, additionally look for occurrences of the reverse complement of P in T. If P is ACT, your
+function should find occurrences of both ACT and its reverse complement AGT in T.
+
+If P and its reverse complement are identical (e.g. AACGTT), then a given match offset should be reported only once.
+So if your new function is called naive_with_rc, then the old naive function and your new naive_with_rc function should
+return the same results when P equals its reverse complement.
+
+1) Implement a version of the naive exact matching algorithm that is strand-aware.
+2) debug with test datasets
+3) download and parse the lambda virus genome, at: https://d28rh4a8wq0iu5.cloudfront.net/ads1/data/lambda_virus.fa
+
+============================================== QUESTIONS ===============================================================
+
+How many times does \verb|AGGT|AGGT or its reverse complement (\verb|ACCT|ACCT) occur in the lambda virus genome?
+E.g. if \verb|AGGT|AGGT occurs 10 times and \verb|ACCT|ACCT occurs 12 times, you should report 22.
+
+How many times does \verb|TTAA|TTAA or its reverse complement occur in the lambda virus genome?
+Hint: \verb|TTAA|TTAA and its reverse complement are equal, so remember not to double count.
+
+What is the offset of the leftmost occurrence of \verb|ACTAAGT|ACTAAGT or its reverse complement in the Lambda virus
+genome? E.g. if the leftmost occurrence of \verb|ACTAAGT|ACTAAGT is at offset 40 (0-based) and the leftmost occurrence
+of its reverse complement \verb|ACTTAGT|ACTTAGT is at offset 29, then report 29.
+
+What is the offset of the leftmost occurrence of \verb|AGTCGA|AGTCGA or its reverse complement in the
+Lambda virus genome?
+
+As we will discuss, sometimes we would like to find approximate matches for P in T. That is, we want to find occurrences
+with one or more differences. For Questions 5 and 6, make a new version of the \verb|naive|naive function called
+\verb|naive_2mm|naive_2mm that allows up to 2 mismatches per occurrence. Unlike for the previous questions, do not
+consider the reverse complement here. We're looking for approximate matches for P itself, not its reverse complement.
+For example, \verb|ACTTTA|ACTTTA occurs twice in \verb|ACTTACTTGATAAAGT|ACTTACTTGATAAAGT, once at offset 0 with 2
+mismatches, and once at offset 4 with 1 mismatch.
+So \verb|naive_2mm('ACTTTA', 'ACTTACTTGATAAAGT')|naive_2mm(’ACTTTA’,’ACTTACTTGATAAAGT’) should return the list
+\verb|[0, 4]|[0,4]. Hint: See this notebook for a few examples you can use to test your \verb|naive_2mm|naive_2mm function.
+How many times does \verb|TTCAAGCC|TTCAAGCC occur in the Lambda virus genome when allowing up to 2 mismatches?
+
+What is the offset of the leftmost occurrence of \verb|AGGAGGTT|AGGAGGTT in the Lambda virus genome when allowing
+up to 2 mismatches?
+
+Finally, download and parse the provided FASTQ file containing real DNA sequencing reads derived from a human:
+https://d28rh4a8wq0iu5.cloudfront.net/ads1/data/ERR037900_1.first1000.fastq
+Note that the file has many reads in it and you should examine all of them together when answering this question.
+The reads are taken from this study:
+Ajay, S. S., Parker, S. C., Abaan, H. O., Fajardo, K. V. F., & Margulies, E. H. (2011). Accurate and comprehensive
+sequencing of personal genomes. Genome research, 21(9), 1498-1505. This dataset has something wrong with it;
+one of the sequencing cycles is poor quality. Report which sequencing cycle has the problem. Remember that a sequencing
+cycle corresponds to a particular offset in all the reads. For example, if the leftmost read position seems to have a
+problem consistently across reads, report 0. If the fourth position from the left has the problem, report 3.
+Do whatever analysis you think is needed to identify the bad cycle.
+It might help to review the "Analyzing reads by position" video.
+'''
