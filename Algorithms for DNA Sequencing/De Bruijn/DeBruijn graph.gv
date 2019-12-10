@@ -1,0 +1,24 @@
+digraph test {
+	CA
+	AG
+	CC
+	GG
+	AT
+	TA
+	CG
+	AC
+	GC
+	TA -> AC
+	AC -> CA
+	CA -> AT
+	AT -> TA
+	TA -> AG
+	AG -> GC
+	GC -> CC
+	CC -> CG
+	CG -> GG
+	GG -> GC
+	label="TACATAGCCGGC
+3 k-mers"
+	fontsize=10
+}
